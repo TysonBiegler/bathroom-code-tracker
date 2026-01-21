@@ -140,7 +140,7 @@ export default function BathroomCodeTracker() {
         };
       })
       .filter((entry) => {
-        const isNearby = entry.distance <= 50; // Increased to 50 miles for testing
+        const isNearby = entry.distance <= 50;
         console.log(`${entry.businessName} is nearby (within 50mi):`, isNearby);
         return isNearby;
       })
@@ -164,7 +164,6 @@ export default function BathroomCodeTracker() {
           const { latitude, longitude } = position.coords;
           console.log("Got coordinates:", latitude, longitude);
 
-          // First resolve with coordinates, then try geocoding
           const coords = {
             address: `${latitude.toFixed(6)}, ${longitude.toFixed(6)}`,
             latitude,
@@ -247,7 +246,6 @@ export default function BathroomCodeTracker() {
       } catch (error) {
         console.error("Location error:", error);
 
-        // More helpful error messages
         let userMessage = error.message;
         if (error.message.includes("unavailable")) {
           userMessage =
@@ -350,7 +348,6 @@ export default function BathroomCodeTracker() {
 
   // Group entries by city
   const groupedByCity = filteredEntries.reduce((acc, entry) => {
-    // Extract city from address (usually after first comma)
     const addressParts = entry.address.split(",");
     const city = addressParts.length > 1 ? addressParts[1].trim() : "Unknown";
 
@@ -361,7 +358,6 @@ export default function BathroomCodeTracker() {
     return acc;
   }, {});
 
-  // Sort cities alphabetically
   const sortedCities = Object.keys(groupedByCity).sort();
 
   const filteredNearbyEntries = nearbyEntries.filter(
@@ -371,58 +367,53 @@ export default function BathroomCodeTracker() {
   );
 
   const EntryCard = ({ entry, showDistance = false }) => (
-    <div className="entry-card">
-      <div className="entry-header">
-        <div className="entry-title-section">
-          <h2>{entry.businessName}</h2>
-          {showDistance && entry.distance !== undefined && (
-            <p className="distance">
-              {entry.distance < 0.1 ? "<0.1" : entry.distance.toFixed(1)} miles
-              away
-            </p>
-          )}
-        </div>
+    <div className="entry-card-compact">
+      <div className="entry-card-header">
+        <h3>{entry.businessName}</h3>
         <div className="entry-actions">
           <button
             onClick={() => handleEdit(entry)}
             className="btn-icon btn-edit"
+            title="Edit"
           >
-            <Edit2 size={20} />
+            <Edit2 size={14} />
           </button>
           <button
             onClick={() => handleDelete(entry.id)}
             className="btn-icon btn-delete"
+            title="Delete"
           >
-            <Trash2 size={20} />
+            <Trash2 size={14} />
           </button>
         </div>
       </div>
 
-      <div className="address-section">
-        <MapPin size={20} />
+      {showDistance && entry.distance !== undefined && (
+        <p className="distance-compact">
+          {entry.distance < 0.1 ? "<0.1" : entry.distance.toFixed(1)} mi
+        </p>
+      )}
+
+      <div className="address-compact">
+        <MapPin size={12} />
         <p>{entry.address}</p>
       </div>
 
-      <div className="codes-grid">
-        <div className="code-box male-code">
-          <p className="code-label">Male Code</p>
-          <p className="code-value">{entry.maleCode || "N/A"}</p>
+      <div className="codes-compact">
+        <div className="code-item male">
+          <span className="code-icon">♂</span>
+          <span className="code-val">{entry.maleCode || "N/A"}</span>
         </div>
-        <div className="code-box female-code">
-          <p className="code-label">Female Code</p>
-          <p className="code-value">{entry.femaleCode || "N/A"}</p>
+        <div className="code-item female">
+          <span className="code-icon">♀</span>
+          <span className="code-val">{entry.femaleCode || "N/A"}</span>
         </div>
       </div>
 
-      <div className="entry-footer">
-        <div>
-          <span className="label">First Added:</span>{" "}
-          {formatDate(entry.firstAdded)}
-        </div>
-        <div>
-          <span className="label">Last Updated:</span>{" "}
-          {formatDate(entry.lastUpdated)}
-        </div>
+      <div className="entry-meta">
+        <span title={`Added: ${formatDate(entry.firstAdded)}`}>
+          Added {new Date(entry.firstAdded).toLocaleDateString()}
+        </span>
       </div>
     </div>
   );
@@ -508,7 +499,7 @@ export default function BathroomCodeTracker() {
               </div>
             )}
 
-            <div className="entries-list">
+            <div className="entries-container">
               {currentView === "my-entries" && filteredEntries.length === 0 && (
                 <div className="empty-state">
                   <p>No entries yet. Add your first bathroom code!</p>
@@ -519,20 +510,35 @@ export default function BathroomCodeTracker() {
                 userLocation &&
                 filteredNearbyEntries.length === 0 && (
                   <div className="empty-state">
-                    <p>No entries found within 10 miles of your location.</p>
+                    <p>No entries found within 50 miles of your location.</p>
                   </div>
                 )}
 
               {currentView === "my-entries" &&
-                filteredEntries.map((entry) => (
-                  <EntryCard key={entry.id} entry={entry} />
+                sortedCities.map((city) => (
+                  <div key={city} className="city-section">
+                    <h2 className="city-header">{city}</h2>
+                    <div className="cards-grid">
+                      {groupedByCity[city].map((entry) => (
+                        <EntryCard key={entry.id} entry={entry} />
+                      ))}
+                    </div>
+                  </div>
                 ))}
 
               {currentView === "nearby" &&
                 userLocation &&
-                filteredNearbyEntries.map((entry) => (
-                  <EntryCard key={entry.id} entry={entry} showDistance={true} />
-                ))}
+                filteredNearbyEntries.length > 0 && (
+                  <div className="cards-grid">
+                    {filteredNearbyEntries.map((entry) => (
+                      <EntryCard
+                        key={entry.id}
+                        entry={entry}
+                        showDistance={true}
+                      />
+                    ))}
+                  </div>
+                )}
             </div>
           </>
         )}
