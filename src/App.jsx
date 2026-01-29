@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import {
   MapPin,
   Plus,
@@ -12,6 +11,7 @@ import {
   Navigation,
   Menu,
   X,
+  User,
 } from "lucide-react";
 import "./App.css";
 
@@ -408,11 +408,11 @@ export default function BathroomCodeTracker() {
 
           <div className="codes-compact">
             <div className="code-item male">
-              <span className="code-icon">♂</span>
+              <User size={12} className="code-icon" />
               <span className="code-val">{entry.maleCode || "N/A"}</span>
             </div>
             <div className="code-item female">
-              <span className="code-icon">♀</span>
+              <User size={12} className="code-icon" />
               <span className="code-val">{entry.femaleCode || "N/A"}</span>
             </div>
           </div>
@@ -453,7 +453,7 @@ export default function BathroomCodeTracker() {
               <div className="modal-codes">
                 <div className="modal-code-box male">
                   <div className="modal-code-label">
-                    <span className="code-icon">♂</span> Male Bathroom Code
+                    <User size={20} /> Male Bathroom Code
                   </div>
                   <div className="modal-code-value">
                     {entry.maleCode || "N/A"}
@@ -461,7 +461,7 @@ export default function BathroomCodeTracker() {
                 </div>
                 <div className="modal-code-box female">
                   <div className="modal-code-label">
-                    <span className="code-icon">♀</span> Female Bathroom Code
+                    <User size={20} /> Female Bathroom Code
                   </div>
                   <div className="modal-code-value">
                     {entry.femaleCode || "N/A"}
