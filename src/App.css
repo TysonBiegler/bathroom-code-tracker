@@ -787,3 +787,10 @@ body.dark-mode .btn-delete:hover {
     flex-direction: column;
   }
 }
+
+.disclaimer {
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin: 1.5rem 0 0.5rem;
+}
