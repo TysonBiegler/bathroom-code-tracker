@@ -116,16 +116,20 @@ export default function BathroomCodeTracker() {
     }
 
     console.log("Loading nearby entries for location:", userLocation);
+    console.log("Total entries:", entries.length);
 
     const nearby = entries
       .filter((entry) => {
         const hasCoords = entry.latitude && entry.longitude;
-        console.log(
-          `Entry ${entry.businessName} has coords:`,
-          hasCoords,
-          entry.latitude,
-          entry.longitude,
-        );
+        if (!hasCoords) {
+          console.log(`❌ Entry "${entry.businessName}" missing coordinates`);
+        } else {
+          console.log(
+            `✓ Entry "${entry.businessName}" has coords:`,
+            entry.latitude,
+            entry.longitude,
+          );
+        }
         return hasCoords;
       })
       .map((entry) => {
@@ -135,20 +139,30 @@ export default function BathroomCodeTracker() {
           entry.latitude,
           entry.longitude,
         );
-        console.log(`Distance to ${entry.businessName}:`, distance, "miles");
+        console.log(
+          `📍 Distance to "${entry.businessName}": ${distance.toFixed(2)} miles`,
+        );
         return {
           ...entry,
           distance,
         };
       })
       .filter((entry) => {
-        const isNearby = entry.distance <= 50;
-        console.log(`${entry.businessName} is nearby (within 50mi):`, isNearby);
+        const isNearby = entry.distance <= 1;
+        if (isNearby) {
+          console.log(
+            `✅ "${entry.businessName}" IS nearby (${entry.distance.toFixed(2)} miles)`,
+          );
+        } else {
+          console.log(
+            `⛔ "${entry.businessName}" too far (${entry.distance.toFixed(2)} miles)`,
+          );
+        }
         return isNearby;
       })
       .sort((a, b) => a.distance - b.distance);
 
-    console.log("Nearby entries found:", nearby.length);
+    console.log("📊 Total nearby entries found:", nearby.length);
     setNearbyEntries(nearby);
   };
 
@@ -217,7 +231,7 @@ export default function BathroomCodeTracker() {
         },
         {
           enableHighAccuracy: true,
-          timeout: 10000,
+          timeout: 30000,
           maximumAge: 0,
         },
       );
@@ -600,7 +614,10 @@ export default function BathroomCodeTracker() {
                 userLocation &&
                 filteredNearbyEntries.length === 0 && (
                   <div className="empty-state">
-                    <p>No entries found within 50 miles of your location.</p>
+                    <p>
+                      No entries found within 1 mile of your location. Make sure
+                      to use "Use My Location" when adding entries.
+                    </p>
                   </div>
                 )}
 
@@ -675,6 +692,16 @@ export default function BathroomCodeTracker() {
                   <MapPin size={18} />
                   Use My Location
                 </button>
+                <p
+                  style={{
+                    fontSize: "0.7rem",
+                    color: "var(--text-secondary)",
+                    marginTop: "0.25rem",
+                  }}
+                >
+                  For best accuracy, make sure GPS is enabled and you're near a
+                  window or outside.
+                </p>
               </div>
 
               <div className="form-row">
