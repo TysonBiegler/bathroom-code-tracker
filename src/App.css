@@ -760,6 +760,13 @@ body.dark-mode .btn-delete:hover {
   margin-bottom: 0.75rem;
 }
 
+.disclaimer {
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin: 1.5rem 0 0.5rem;
+}
+
 /* Responsive */
 @media (max-width: 640px) {
   .cards-grid {
@@ -786,11 +793,4 @@ body.dark-mode .btn-delete:hover {
   .search-bar {
     flex-direction: column;
   }
-}
-
-.disclaimer {
-  text-align: center;
-  font-size: 0.75rem;
-  color: var(--text-secondary);
-  margin: 1.5rem 0 0.5rem;
 }
