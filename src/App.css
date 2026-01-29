@@ -5,6 +5,7 @@
   --card-bg: #ffffff;
   --text-primary: #18181b;
   --text-secondary: #71717a;
+  --text-disc: #7a7a7a;
   --border-color: #e4e4e7;
   --input-bg: #ffffff;
   --input-border: #d4d4d8;
@@ -763,7 +764,7 @@ body.dark-mode .btn-delete:hover {
 .disclaimer {
   text-align: center;
   font-size: 0.75rem;
-  color: var(--text-secondary);
+  color: var(--text-disc);
   margin: 1.5rem 0 0.5rem;
 }
 

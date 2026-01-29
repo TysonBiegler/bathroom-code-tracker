@@ -854,10 +854,10 @@ export default function BathroomCodeTracker() {
           </div>
         )}
       </div>
-        <p className="disclaimer">
-        Bathroom codes are intended for customers only. Please respect each business’s policies.
+      <p className="disclaimer">
+        Bathroom codes are intended for customers only. Please respect each
+        business’s policies.
       </p>
-    </div>
     </div>
   );
 }
