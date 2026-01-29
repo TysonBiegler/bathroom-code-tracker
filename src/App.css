@@ -1,55 +1,4 @@
-/* Root Variables - Slate/Blue Theme */
-/* :root {
-  --bg-gradient-start: #f1f5f9;
-  --bg-gradient-end: #e2e8f0;
-  --card-bg: #ffffff;
-  --text-primary: #0f172a;
-  --text-secondary: #64748b;
-  --border-color: #e2e8f0;
-  --input-bg: #ffffff;
-  --input-border: #cbd5e1;
-  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-
-  --primary: #0ea5e9;
-  --primary-hover: #0284c7;
-  --secondary-bg: #f1f5f9;
-  --secondary-hover: #e2e8f0;
-
-  --male-bg: #e0f2fe;
-  --male-text: #075985;
-  --male-value: #0284c7;
-
-  --female-bg: #fce7f3;
-  --female-text: #831843;
-  --female-value: #db2777;
-}
-
-body.dark-mode {
-  --bg-gradient-start: #020617;
-  --bg-gradient-end: #0f172a;
-  --card-bg: #1e293b;
-  --text-primary: #f1f5f9;
-  --text-secondary: #94a3b8;
-  --border-color: #334155;
-  --input-bg: #334155;
-  --input-border: #475569;
-  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.5);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5);
-
-  --secondary-bg: #334155;
-  --secondary-hover: #475569;
-
-  --male-bg: #0c4a6e;
-  --male-text: #7dd3fc;
-  --male-value: #38bdf8;
-
-  --female-bg: #831843;
-  --female-text: #fbcfe8;
-  --female-value: #f472b6;
-} */
-
-/* Root Variables - Monochrome Muted Theme */
+/* Root Variables */
 :root {
   --bg-gradient-start: #fafafa;
   --bg-gradient-end: #f4f4f5;
@@ -77,8 +26,8 @@ body.dark-mode {
 }
 
 body.dark-mode {
-  --bg-gradient-start: #09090b;
-  --bg-gradient-end: #18181b;
+  --bg-gradient-start: #171717;
+  --bg-gradient-end: #323232;
   --card-bg: #27272a;
   --text-primary: #fafafa;
   --text-secondary: #a1a1aa;
