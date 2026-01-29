@@ -1,52 +1,52 @@
-/* Root Variables */
+/* Root Variables - Slate/Blue Theme */
 :root {
-  --bg-gradient-start: #eff6ff;
-  --bg-gradient-end: #e0e7ff;
+  --bg-gradient-start: #f1f5f9;
+  --bg-gradient-end: #e2e8f0;
   --card-bg: #ffffff;
-  --text-primary: #1f2937;
-  --text-secondary: #6b7280;
-  --border-color: #e5e7eb;
+  --text-primary: #0f172a;
+  --text-secondary: #64748b;
+  --border-color: #e2e8f0;
   --input-bg: #ffffff;
-  --input-border: #d1d5db;
+  --input-border: #cbd5e1;
   --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
 
-  --primary: #4f46e5;
-  --primary-hover: #4338ca;
-  --secondary-bg: #f3f4f6;
-  --secondary-hover: #e5e7eb;
+  --primary: #0ea5e9;
+  --primary-hover: #0284c7;
+  --secondary-bg: #f1f5f9;
+  --secondary-hover: #e2e8f0;
 
-  --male-bg: #dbeafe;
-  --male-text: #1e3a8a;
-  --male-value: #1d4ed8;
+  --male-bg: #e0f2fe;
+  --male-text: #075985;
+  --male-value: #0284c7;
 
   --female-bg: #fce7f3;
   --female-text: #831843;
-  --female-value: #be185d;
+  --female-value: #db2777;
 }
 
 body.dark-mode {
-  --bg-gradient-start: #111827;
-  --bg-gradient-end: #1f2937;
-  --card-bg: #1f2937;
-  --text-primary: #f3f4f6;
-  --text-secondary: #9ca3af;
-  --border-color: #374151;
-  --input-bg: #374151;
-  --input-border: #4b5563;
-  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.3);
+  --bg-gradient-start: #020617;
+  --bg-gradient-end: #0f172a;
+  --card-bg: #1e293b;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --border-color: #334155;
+  --input-bg: #334155;
+  --input-border: #475569;
+  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.5);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5);
 
-  --secondary-bg: #374151;
-  --secondary-hover: #4b5563;
+  --secondary-bg: #334155;
+  --secondary-hover: #475569;
 
-  --male-bg: #1e3a8a;
-  --male-text: #dbeafe;
-  --male-value: #93c5fd;
+  --male-bg: #0c4a6e;
+  --male-text: #7dd3fc;
+  --male-value: #38bdf8;
 
   --female-bg: #831843;
-  --female-text: #fce7f3;
-  --female-value: #f9a8d4;
+  --female-text: #fbcfe8;
+  --female-value: #f472b6;
 }
 
 * {
@@ -308,11 +308,11 @@ body {
 }
 
 .btn-edit:hover {
-  background: #eef2ff;
+  background: rgba(14, 165, 233, 0.1);
 }
 
 body.dark-mode .btn-edit:hover {
-  background: #312e81;
+  background: rgba(14, 165, 233, 0.2);
 }
 
 .btn-delete {
