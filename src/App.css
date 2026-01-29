@@ -49,27 +49,27 @@ body.dark-mode {
   --female-value: #f472b6;
 } */
 
-/* Root Variables - Forest Green Theme */
+/* Root Variables - Teal/Cyan Theme */
 :root {
-  --bg-gradient-start: #f0fdf4;
-  --bg-gradient-end: #dcfce7;
+  --bg-gradient-start: #f0fdfa;
+  --bg-gradient-end: #ccfbf1;
   --card-bg: #ffffff;
   --text-primary: #0f172a;
   --text-secondary: #64748b;
-  --border-color: #d1fae5;
+  --border-color: #99f6e4;
   --input-bg: #ffffff;
-  --input-border: #bbf7d0;
+  --input-border: #5eead4;
   --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
 
-  --primary: #10b981;
-  --primary-hover: #059669;
-  --secondary-bg: #f0fdf4;
-  --secondary-hover: #dcfce7;
+  --primary: #14b8a6;
+  --primary-hover: #0d9488;
+  --secondary-bg: #f0fdfa;
+  --secondary-hover: #ccfbf1;
 
-  --male-bg: #d1fae5;
-  --male-text: #065f46;
-  --male-value: #059669;
+  --male-bg: #ccfbf1;
+  --male-text: #115e59;
+  --male-value: #0d9488;
 
   --female-bg: #fce7f3;
   --female-text: #831843;
@@ -77,8 +77,8 @@ body.dark-mode {
 }
 
 body.dark-mode {
-  --bg-gradient-start: #022c22;
-  --bg-gradient-end: #064e3b;
+  --bg-gradient-start: #042f2e;
+  --bg-gradient-end: #134e4a;
   --card-bg: #1f2937;
   --text-primary: #f1f5f9;
   --text-secondary: #94a3b8;
@@ -91,15 +91,14 @@ body.dark-mode {
   --secondary-bg: #334155;
   --secondary-hover: #475569;
 
-  --male-bg: #064e3b;
-  --male-text: #6ee7b7;
-  --male-value: #34d399;
+  --male-bg: #134e4a;
+  --male-text: #5eead4;
+  --male-value: #2dd4bf;
 
   --female-bg: #831843;
   --female-text: #fbcfe8;
   --female-value: #f472b6;
 }
-
 * {
   margin: 0;
   padding: 0;
