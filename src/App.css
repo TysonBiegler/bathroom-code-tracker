@@ -91,11 +91,11 @@ body.dark-mode {
   --secondary-bg: #3f3f46;
   --secondary-hover: #52525b;
 
-  --male-bg: #1e293b;
+  --male-bg: #1f3a65;
   --male-text: #94a3b8;
   --male-value: #cbd5e1;
 
-  --female-bg: #3f2937;
+  --female-bg: #5b2146;
   --female-text: #d8b4e2;
   --female-value: #e9d5ff;
 }
