@@ -49,55 +49,55 @@ body.dark-mode {
   --female-value: #f472b6;
 } */
 
-/* Root Variables - Monochrome + Purple Accent Theme */
+/* Root Variables - Monochrome Muted Theme */
 :root {
   --bg-gradient-start: #fafafa;
-  --bg-gradient-end: #f5f5f5;
+  --bg-gradient-end: #f4f4f5;
   --card-bg: #ffffff;
-  --text-primary: #0a0a0a;
-  --text-secondary: #737373;
-  --border-color: #e5e5e5;
+  --text-primary: #18181b;
+  --text-secondary: #71717a;
+  --border-color: #e4e4e7;
   --input-bg: #ffffff;
-  --input-border: #d4d4d4;
-  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  --input-border: #d4d4d8;
+  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.08);
 
-  --primary: #8b5cf6;
-  --primary-hover: #7c3aed;
+  --primary: #52525b;
+  --primary-hover: #3f3f46;
   --secondary-bg: #fafafa;
-  --secondary-hover: #f5f5f5;
+  --secondary-hover: #f4f4f5;
 
-  --male-bg: #ddd6fe;
-  --male-text: #5b21b6;
-  --male-value: #7c3aed;
+  --male-bg: #e0e7ff;
+  --male-text: #475569;
+  --male-value: #64748b;
 
   --female-bg: #fce7f3;
-  --female-text: #881337;
-  --female-value: #e11d48;
+  --female-text: #71717a;
+  --female-value: #a1a1aa;
 }
 
 body.dark-mode {
-  --bg-gradient-start: #0a0a0a;
-  --bg-gradient-end: #171717;
-  --card-bg: #262626;
+  --bg-gradient-start: #09090b;
+  --bg-gradient-end: #18181b;
+  --card-bg: #27272a;
   --text-primary: #fafafa;
-  --text-secondary: #a3a3a3;
-  --border-color: #404040;
-  --input-bg: #404040;
-  --input-border: #525252;
+  --text-secondary: #a1a1aa;
+  --border-color: #3f3f46;
+  --input-bg: #3f3f46;
+  --input-border: #52525b;
   --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.5);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.6);
 
-  --secondary-bg: #404040;
-  --secondary-hover: #525252;
+  --secondary-bg: #3f3f46;
+  --secondary-hover: #52525b;
 
-  --male-bg: #4c1d95;
-  --male-text: #c4b5fd;
-  --male-value: #a78bfa;
+  --male-bg: #1e293b;
+  --male-text: #94a3b8;
+  --male-value: #cbd5e1;
 
-  --female-bg: #881337;
-  --female-text: #fecdd3;
-  --female-value: #fb7185;
+  --female-bg: #3f2937;
+  --female-text: #d8b4e2;
+  --female-value: #e9d5ff;
 }
 
 * {
