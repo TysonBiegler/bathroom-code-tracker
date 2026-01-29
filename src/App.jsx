@@ -77,21 +77,53 @@ export default function BathroomCodeTracker() {
   const getUserLocation = () => {
     if (navigator.geolocation) {
       console.log("Requesting user location...");
+
+      // Try with high accuracy first
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const location = {
             latitude: position.coords.latitude,
             longitude: position.coords.longitude,
           };
-          console.log("User location obtained:", location);
+          console.log("User location obtained (high accuracy):", location);
           setUserLocation(location);
         },
         (error) => {
-          console.log("Location access error:", error);
+          console.log("High accuracy failed, trying low accuracy...", error);
+
+          // Fallback: Try with lower accuracy settings
+          navigator.geolocation.getCurrentPosition(
+            (position) => {
+              const location = {
+                latitude: position.coords.latitude,
+                longitude: position.coords.longitude,
+              };
+              console.log("User location obtained (low accuracy):", location);
+              setUserLocation(location);
+            },
+            (error) => {
+              console.log("Location access error:", error);
+              alert(
+                "Unable to get your location. This feature works best on mobile devices with GPS. Error: " +
+                  error.message,
+              );
+            },
+            {
+              enableHighAccuracy: false, // Allow WiFi/cell tower positioning
+              timeout: 10000,
+              maximumAge: 300000, // Accept cached location up to 5 minutes old
+            },
+          );
+        },
+        {
+          enableHighAccuracy: true,
+          timeout: 5000, // Shorter timeout for first attempt
+          maximumAge: 0,
         },
       );
     } else {
       console.log("Geolocation not supported");
+      alert("Geolocation is not supported by your browser");
     }
   };
 
@@ -148,7 +180,7 @@ export default function BathroomCodeTracker() {
         };
       })
       .filter((entry) => {
-        const isNearby = entry.distance <= 1;
+        const isNearby = entry.distance <= 1; // Changed from 50 to 1 mile
         if (isNearby) {
           console.log(
             `✅ "${entry.businessName}" IS nearby (${entry.distance.toFixed(2)} miles)`,
@@ -175,10 +207,11 @@ export default function BathroomCodeTracker() {
 
       console.log("Requesting geolocation...");
 
+      // Try high accuracy first
       navigator.geolocation.getCurrentPosition(
         async (position) => {
           const { latitude, longitude } = position.coords;
-          console.log("Got coordinates:", latitude, longitude);
+          console.log("Got coordinates (high accuracy):", latitude, longitude);
 
           const coords = {
             address: `${latitude.toFixed(6)}, ${longitude.toFixed(6)}`,
@@ -211,27 +244,74 @@ export default function BathroomCodeTracker() {
           resolve(coords);
         },
         (error) => {
-          console.error("Geolocation error:", error);
-          let errorMsg = "Location access denied";
+          console.log("High accuracy failed, trying low accuracy...", error);
 
-          switch (error.code) {
-            case error.PERMISSION_DENIED:
-              errorMsg =
-                "Location permission denied. Please check your browser settings.";
-              break;
-            case error.POSITION_UNAVAILABLE:
-              errorMsg = "Location information unavailable.";
-              break;
-            case error.TIMEOUT:
-              errorMsg = "Location request timed out.";
-              break;
-          }
+          // Fallback to low accuracy
+          navigator.geolocation.getCurrentPosition(
+            async (position) => {
+              const { latitude, longitude } = position.coords;
+              console.log(
+                "Got coordinates (low accuracy):",
+                latitude,
+                longitude,
+              );
 
-          reject(new Error(errorMsg));
+              const coords = {
+                address: `${latitude.toFixed(6)}, ${longitude.toFixed(6)}`,
+                latitude,
+                longitude,
+              };
+
+              try {
+                const response = await fetch(
+                  `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`,
+                  {
+                    headers: {
+                      "User-Agent": "BathroomCodeTracker/1.0",
+                    },
+                  },
+                );
+
+                if (response.ok) {
+                  const data = await response.json();
+                  coords.address = data.display_name;
+                }
+              } catch (error) {
+                console.log("Geocoding error:", error);
+              }
+
+              resolve(coords);
+            },
+            (finalError) => {
+              console.error("Both accuracy attempts failed:", finalError);
+              let errorMsg = "Location access denied";
+
+              switch (finalError.code) {
+                case finalError.PERMISSION_DENIED:
+                  errorMsg =
+                    "Location permission denied. Please check your browser settings.";
+                  break;
+                case finalError.POSITION_UNAVAILABLE:
+                  errorMsg =
+                    "Location information unavailable. Try moving near a window or restarting your browser.";
+                  break;
+                case finalError.TIMEOUT:
+                  errorMsg = "Location request timed out. Please try again.";
+                  break;
+              }
+
+              reject(new Error(errorMsg));
+            },
+            {
+              enableHighAccuracy: false,
+              timeout: 10000,
+              maximumAge: 300000,
+            },
+          );
         },
         {
           enableHighAccuracy: true,
-          timeout: 30000,
+          timeout: 5000,
           maximumAge: 0,
         },
       );
@@ -614,9 +694,16 @@ export default function BathroomCodeTracker() {
                 userLocation &&
                 filteredNearbyEntries.length === 0 && (
                   <div className="empty-state">
-                    <p>
-                      No entries found within 1 mile of your location. Make sure
-                      to use "Use My Location" when adding entries.
+                    <p>No entries found within 1 mile of your location.</p>
+                    <p
+                      style={{
+                        fontSize: "0.8rem",
+                        marginTop: "0.5rem",
+                        color: "var(--text-secondary)",
+                      }}
+                    >
+                      Make sure to use "Use My Location" when adding entries so
+                      they can be found nearby.
                     </p>
                   </div>
                 )}
