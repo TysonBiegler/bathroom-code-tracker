@@ -32,30 +32,6 @@ A mobile-first Progressive Web App for tracking and sharing bathroom access code
 - React + Vite
 - Progressive Web App (PWA)
 - LocalStorage for data persistence
-```
 
-```
-Just built a PWA for tracking bathroom codes at businesses! 🚻
-
-Install it on your phone: https://tysonbiegler.github.io/bathroom-code-tracker/
-
-Works offline, uses your location, and saves codes locally. No app store needed!
-
-#PWA #WebDev #React
-```
-
-```
-Built my first PWA - Bathroom Code Tracker
-
-I created a mobile app for tracking bathroom access codes at businesses. It's a Progressive Web App, so anyone can install it without an app store.
-
-Features:
-- Location-based search (within 1 mile)
-- Works offline
-- Dark mode
-- Organized by city
-
-Check it out: https://tysonbiegler.github.io/bathroom-code-tracker/
-GitHub: https://github.com/tysonbiegler/bathroom-code-tracker
 
 Feedback welcome!
