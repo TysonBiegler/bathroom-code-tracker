@@ -1,41 +1,37 @@
-# Bathroom Code Tracker 🚻🔐
+# <img width="50" height="50" alt="image" src="https://github.com/user-attachments/assets/0002b4cd-f294-43a5-a827-5ec7a1f5f79d" />  Bathroom Code Tracker
 
-**Bathroom Code Tracker** is a simple web app that lets you store and look up bathroom door codes you encounter *in the wild*. No more awkwardly standing outside the door trying to remember a 4-digit code.
+A mobile-first Progressive Web App for tracking and sharing bathroom access codes at businesses.
 
-👉 **Live App:**  
-https://tysonbiegler.github.io/bathroom-code-tracker/
+## 📱 Install on Your Phone
 
----
 
-## ✨ Features
+<img width="500" height="576" alt="image" src="https://github.com/user-attachments/assets/6a57ca58-b0fc-41c4-b147-258b4587e810" />
 
-- Save bathroom codes with a location name
-- Search quickly through saved entries
-- Edit or delete existing codes
-- Clean, minimal interface for fast access
-- Works entirely in the browser (no account required)
+### Android (Chrome):
+1. Open [Bathroom Code Tracker](https://tysonbiegler.github.io/bathroom-code-tracker/)
+2. Tap the menu (⋮) and select **"Install app"**
+3. Your app icon appears on your home screen!
 
----
+### iPhone (Safari):
+1. Open [Bathroom Code Tracker](https://tysonbiegler.github.io/bathroom-code-tracker/)
+2. Tap the **Share button** (square with arrow)
+3. Select **"Add to Home Screen"**
+4. Your app icon appears on your home screen!
 
-## 🛠️ Built With
+## Features
 
-- React
-- JavaScript (ES6+)
-- CSS
-- Browser Local Storage
+- 📍 Location-based search - Find codes within 1 mile
+- 🌐 Works offline
+- 🔒 Data stored locally on your device
+- 🌙 Dark mode support
+- 🏙️ Organized by city
+- 📱 Native app experience
 
----
+## 🛠️ Tech Stack
 
-## 🔒 Privacy
+- React + Vite
+- Progressive Web App (PWA)
+- LocalStorage for data persistence
 
-All data is stored locally in your browser.  
-No data is sent to a server. Clearing browser data will remove saved codes.
 
----
-
-## 💡 Why This Exists
-
-Because bathroom codes are everywhere… and remembering them is a pain.
-
----
-
+Feedback welcome!
