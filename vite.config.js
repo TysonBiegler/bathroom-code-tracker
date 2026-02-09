@@ -21,17 +21,17 @@ export default defineConfig({
         background_color: "#fafafa",
         display: "standalone",
         orientation: "portrait",
-        start_url: "/bathroom-code-tracker/",
-        scope: "/bathroom-code-tracker/",
+        start_url: "./", // Changed to relative
+        scope: "./", // Changed to relative
         icons: [
           {
-            src: "/bathroom-code-tracker/android-chrome-192x192.png",
+            src: "android-chrome-192x192.png", // Removed leading slash
             sizes: "192x192",
             type: "image/png",
             purpose: "any maskable",
           },
           {
-            src: "/bathroom-code-tracker/android-chrome-512x512.png",
+            src: "android-chrome-512x512.png", // Removed leading slash
             sizes: "512x512",
             type: "image/png",
             purpose: "any maskable",
@@ -40,7 +40,8 @@ export default defineConfig({
       },
       workbox: {
         globPatterns: ["**/*.{js,css,html,ico,png,svg}"],
-        navigateFallback: "/bathroom-code-tracker/index.html",
+        navigateFallback: "index.html", // Removed path
+        navigateFallbackDenylist: [/^\/api/],
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/nominatim\.openstreetmap\.org\/.*/i,
@@ -54,6 +55,9 @@ export default defineConfig({
             },
           },
         ],
+      },
+      devOptions: {
+        enabled: false,
       },
     }),
   ],
