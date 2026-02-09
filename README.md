@@ -1,4 +1,4 @@
-# 🚻 Bathroom Code Tracker
+# <img width="50" height="50" alt="image" src="https://github.com/user-attachments/assets/0002b4cd-f294-43a5-a827-5ec7a1f5f79d" />  Bathroom Code Tracker
 
 A mobile-first Progressive Web App for tracking and sharing bathroom access codes at businesses.
 
