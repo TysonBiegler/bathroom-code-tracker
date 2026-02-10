@@ -1,7 +1,7 @@
 /* PWA Standalone Mode - Larger base font */
 @media (display-mode: standalone) {
   html {
-    font-size: 112.5%; /* Makes base font 18px instead of 16px */
+    font-size: 125%;
   }
 }
 
