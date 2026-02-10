@@ -848,11 +848,9 @@ body.dark-mode .btn-delete:hover {
 }
 
 .disclaimer p {
-  font-size: 0.25rem;
   line-height: 1.5;
   max-width: 600px;
   margin: 0 auto;
-  color: var(--text-secondary);
 }
 
 /* Responsive */
