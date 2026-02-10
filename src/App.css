@@ -844,6 +844,7 @@ body.dark-mode .btn-delete:hover {
   padding: 1.5rem 1rem;
   margin-top: 2rem;
   color: var(--text-secondary);
+  font-size: 0.25rem;
 }
 
 .disclaimer p {
