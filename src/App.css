@@ -795,3 +795,39 @@ body.dark-mode .btn-delete:hover {
     flex-direction: column;
   }
 }
+/* PWA Standalone Mode */
+@media (display-mode: standalone) {
+  body {
+    font-size: 1rem; /* Base text */
+  }
+
+  .header-card h1 {
+    font-size: 1.5rem; /* Slightly larger header */
+  }
+
+  .entry-card-compact h3 {
+    font-size: 1rem; /* Larger card titles */
+  }
+
+  .code-val {
+    font-size: 0.9rem; /* Larger codes */
+  }
+
+  .address-compact {
+    font-size: 0.8rem; /* Larger addresses */
+  }
+
+  .entry-meta {
+    font-size: 0.75rem; /* Larger metadata */
+  }
+
+  input,
+  .input,
+  .search-input {
+    font-size: 1rem; /* Larger inputs */
+  }
+
+  button {
+    font-size: 0.95rem; /* Larger buttons */
+  }
+}
