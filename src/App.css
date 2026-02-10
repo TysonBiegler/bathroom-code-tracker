@@ -63,11 +63,16 @@ body.dark-mode {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(to bottom right, var(--bg-gradient-start), var(--bg-gradient-end));
+  background: linear-gradient(
+    to bottom right,
+    var(--bg-gradient-start),
+    var(--bg-gradient-end)
+  );
   min-height: 100vh;
   transition: background 0.2s;
 }
@@ -342,7 +347,9 @@ body.dark-mode .btn-delete:hover {
   box-shadow: var(--shadow);
   padding: 0.5rem;
   border: 1px solid var(--border-color);
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -484,8 +491,12 @@ body.dark-mode .btn-delete:hover {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .modal-card {
@@ -840,12 +851,12 @@ body.dark-mode .btn-delete:hover {
   line-height: 1.5;
   max-width: 600px;
   margin: 0 auto;
-  color: #52525b !important; /* Dark gray for light mode */
+  color: #52525b; /* Dark gray for light mode */
 }
 
 /* Light text in dark mode */
 body.dark-mode .disclaimer p {
-  color: #a1a1aa !important; /* Light gray for dark mode */
+  color: #a1a1aa; /* Light gray for dark mode */
 }
 
 /* Responsive */
