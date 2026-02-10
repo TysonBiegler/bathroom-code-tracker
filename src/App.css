@@ -851,12 +851,7 @@ body.dark-mode .btn-delete:hover {
   line-height: 1.5;
   max-width: 600px;
   margin: 0 auto;
-  color: #52525b; /* Dark gray for light mode */
-}
-
-/* Light text in dark mode */
-body.dark-mode .disclaimer p {
-  color: #a1a1aa; /* Light gray for dark mode */
+  color: #a1a1aa;
 }
 
 /* Responsive */
