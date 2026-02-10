@@ -21,7 +21,6 @@ A mobile-first Progressive Web App for tracking and sharing bathroom access code
 ## Features
 
 - 📍 Location-based search - Find codes within 1 mile
-- 🌐 Works offline
 - 🔒 Data stored locally on your device
 - 🌙 Dark mode support
 - 🏙️ Organized by city
