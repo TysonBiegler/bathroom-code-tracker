@@ -745,7 +745,7 @@ export default function BathroomCodeTracker() {
         {isAdding && (
           <div className="form-card">
             <h2>{editingId ? "Edit Entry" : "Add New Entry"}</h2>
-            <div className="form" onSubmit={handleSubmit}>
+            <form className="form" onSubmit={handleSubmit}>
               <div className="form-group">
                 <label>Business Name *</label>
                 <input
@@ -830,8 +830,8 @@ export default function BathroomCodeTracker() {
 
               <div className="form-actions">
                 <button
-                  type="button"
-                  onClick={handleSubmit}
+                  type="submit"
+                  onClick={handleSubmit} 
                   className="btn-primary btn-full"
                 >
                   {editingId ? "Update Entry" : "Save Entry"}
@@ -855,7 +855,7 @@ export default function BathroomCodeTracker() {
                   Cancel
                 </button>
               </div>
-            </div>
+            </form>
           </div>
         )}
       </div>

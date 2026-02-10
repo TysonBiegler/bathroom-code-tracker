@@ -37,7 +37,7 @@ body.dark-mode {
   --bg-gradient-end: #18181b;
   --card-bg: #27272a;
   --text-primary: #fafafa;
-  --text-secondary: #a1a1aa;
+  --text-secondary: #d1d5db;
   --border-color: #3f3f46;
   --input-bg: #3f3f46;
   --input-border: #52525b;
@@ -839,7 +839,6 @@ body.dark-mode .btn-delete:hover {
   margin-bottom: 0.75rem;
 }
 
-/* Disclaimer Footer */
 .disclaimer {
   text-align: center;
   padding: 1.5rem 1rem;
@@ -851,7 +850,7 @@ body.dark-mode .btn-delete:hover {
   line-height: 1.5;
   max-width: 600px;
   margin: 0 auto;
-  color: #a1a1aa;
+  color: var(--text-secondary);
 }
 
 /* Responsive */
