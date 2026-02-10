@@ -4,7 +4,7 @@
   "description": "Find and share bathroom access codes for businesses",
   "start_url": "/bathroom-code-tracker/",
   "scope": "/bathroom-code-tracker/",
-  "display": "fullscreen",
+  "display": "standalone",
   "background_color": "#fafafa",
   "theme_color": "#52525b",
   "orientation": "portrait",
