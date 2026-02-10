@@ -5,6 +5,30 @@
   }
 }
 
+/* Disclaimer Footer */
+.disclaimer {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  margin-top: 2rem;
+}
+
+.disclaimer p {
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  line-height: 1.5;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Light text in dark mode, dark text in light mode */
+body.dark-mode .disclaimer p {
+  color: #a1a1aa;
+}
+
+body:not(.dark-mode) .disclaimer p {
+  color: #52525b;
+}
+
 /* Root Variables - Monochrome Muted Theme */
 :root {
   --bg-gradient-start: #fafafa;
@@ -865,27 +889,4 @@ body.dark-mode .btn-delete:hover {
   .search-bar {
     flex-direction: column;
   }
-}
-/* Disclaimer Footer */
-.disclaimer {
-  text-align: center;
-  padding: 1.5rem 1rem;
-  margin-top: 2rem;
-}
-
-.disclaimer p {
-  color: var(--text-secondary);
-  font-size: 0.75rem;
-  line-height: 1.5;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-/* Light text in dark mode, dark text in light mode */
-body.dark-mode .disclaimer p {
-  color: #a1a1aa;
-}
-
-body:not(.dark-mode) .disclaimer p {
-  color: #52525b;
 }
