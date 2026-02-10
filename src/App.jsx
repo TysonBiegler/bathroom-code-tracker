@@ -41,8 +41,13 @@ export default function BathroomCodeTracker() {
     getUserLocation();
 
     const savedDarkMode = localStorage.getItem("darkMode");
-    if (savedDarkMode) {
+    if (savedDarkMode !== null) {
+      // User has explicitly set a preference
       setDarkMode(JSON.parse(savedDarkMode));
+    } else {
+      // No preference saved - default to dark mode
+      setDarkMode(true);
+      localStorage.setItem("darkMode", JSON.stringify(true));
     }
   }, []);
 
