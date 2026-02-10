@@ -1,32 +1,8 @@
 /* PWA Standalone Mode - Larger base font */
 @media (display-mode: standalone) {
   html {
-    font-size: 125%;
+    font-size: 112.5%; /* Makes base font 18px instead of 16px */
   }
-}
-
-/* Disclaimer Footer */
-.disclaimer {
-  text-align: center;
-  padding: 1.5rem 1rem;
-  margin-top: 2rem;
-}
-
-.disclaimer p {
-  color: var(--text-secondary);
-  font-size: 0.75rem;
-  line-height: 1.5;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-/* Light text in dark mode, dark text in light mode */
-body.dark-mode .disclaimer p {
-  color: #a1a1aa;
-}
-
-body:not(.dark-mode) .disclaimer p {
-  color: #52525b;
 }
 
 /* Root Variables - Monochrome Muted Theme */
@@ -861,6 +837,26 @@ body.dark-mode .btn-delete:hover {
   color: var(--text-secondary);
   font-size: 0.9rem;
   margin-bottom: 0.75rem;
+}
+
+/* Disclaimer Footer */
+.disclaimer {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  margin-top: 2rem;
+}
+
+.disclaimer p {
+  font-size: 0.75rem;
+  line-height: 1.5;
+  max-width: 600px;
+  margin: 0 auto;
+  color: #52525b !important; /* Dark gray for light mode */
+}
+
+/* Light text in dark mode */
+body.dark-mode .disclaimer p {
+  color: #a1a1aa !important; /* Light gray for dark mode */
 }
 
 /* Responsive */
