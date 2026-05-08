@@ -7,7 +7,7 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: "autoUpdate",
-      manifest: false, // DISABLE auto-generated manifest
+      manifest: false,
       injectManifest: {
         globPatterns: ["**/*.{js,css,html,ico,png,svg}"],
       },
@@ -31,4 +31,15 @@ export default defineConfig({
     }),
   ],
   base: "/bathroom-code-tracker/",
+  define: {
+    __BUILD_DATE__: JSON.stringify(
+      new Date().toLocaleString("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+        hour: "numeric",
+        minute: "2-digit",
+      }),
+    ),
+  },
 });

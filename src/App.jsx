@@ -212,9 +212,10 @@ export default function BathroomCodeTracker() {
     const streetLine = [streetNumber, street].filter(Boolean).join(" ");
     const stateZip = [state, postcode].filter(Boolean).join(" ");
 
-    const formatted = [streetLine, city, stateZip].filter(Boolean).join(", ");
+    const formatted = [streetLine, city, stateZip]
+      .filter(Boolean)
+      .join(", ");
 
-    // Fall back to Nominatim's display_name only if we got nothing useful
     return formatted || data.display_name;
   };
 
@@ -872,10 +873,10 @@ export default function BathroomCodeTracker() {
           </div>
         )}
       </div>
-      <p className="disclaimer">
-        Bathroom codes are intended for customers only. Please respect each
-        business's policies.
-      </p>
+      <div className="disclaimer">
+        <p>Bathroom codes are intended for customers only. Please respect each business's policies.</p>
+        <p>© Tyson Biegler 2026 &nbsp;·&nbsp; Last updated: {__BUILD_DATE__}</p>
+      </div>
     </div>
   );
 }
