@@ -42,10 +42,8 @@ export default function BathroomCodeTracker() {
 
     const savedDarkMode = localStorage.getItem("darkMode");
     if (savedDarkMode !== null) {
-      // User has explicitly set a preference
       setDarkMode(JSON.parse(savedDarkMode));
     } else {
-      // No preference saved - default to dark mode
       setDarkMode(true);
       localStorage.setItem("darkMode", JSON.stringify(true));
     }
@@ -83,7 +81,6 @@ export default function BathroomCodeTracker() {
     if (navigator.geolocation) {
       console.log("Requesting user location...");
 
-      // Try with high accuracy first
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const location = {
@@ -96,7 +93,6 @@ export default function BathroomCodeTracker() {
         (error) => {
           console.log("High accuracy failed, trying low accuracy...", error);
 
-          // Fallback: Try with lower accuracy settings
           navigator.geolocation.getCurrentPosition(
             (position) => {
               const location = {
@@ -114,15 +110,15 @@ export default function BathroomCodeTracker() {
               );
             },
             {
-              enableHighAccuracy: false, // Allow WiFi/cell tower positioning
+              enableHighAccuracy: false,
               timeout: 10000,
-              maximumAge: 300000, // Accept cached location up to 5 minutes old
+              maximumAge: 300000,
             },
           );
         },
         {
           enableHighAccuracy: true,
-          timeout: 5000, // Shorter timeout for first attempt
+          timeout: 5000,
           maximumAge: 0,
         },
       );
@@ -185,7 +181,7 @@ export default function BathroomCodeTracker() {
         };
       })
       .filter((entry) => {
-        const isNearby = entry.distance <= 1; // Changed from 50 to 1 mile
+        const isNearby = entry.distance <= 1;
         if (isNearby) {
           console.log(
             `✅ "${entry.businessName}" IS nearby (${entry.distance.toFixed(2)} miles)`,
@@ -203,6 +199,25 @@ export default function BathroomCodeTracker() {
     setNearbyEntries(nearby);
   };
 
+  // Builds a clean "915 Southeast 164th Avenue, Vancouver, WA 98683" address
+  // from Nominatim's structured address object.
+  const formatNominatimAddress = (data) => {
+    const a = data.address;
+    const streetNumber = a.house_number || "";
+    const street = a.road || a.pedestrian || a.footway || a.path || "";
+    const city = a.city || a.town || a.village || a.hamlet || "";
+    const state = a.state || "";
+    const postcode = a.postcode || "";
+
+    const streetLine = [streetNumber, street].filter(Boolean).join(" ");
+    const stateZip = [state, postcode].filter(Boolean).join(" ");
+
+    const formatted = [streetLine, city, stateZip].filter(Boolean).join(", ");
+
+    // Fall back to Nominatim's display_name only if we got nothing useful
+    return formatted || data.display_name;
+  };
+
   const getCurrentLocation = () => {
     return new Promise((resolve, reject) => {
       if (!navigator.geolocation) {
@@ -212,7 +227,6 @@ export default function BathroomCodeTracker() {
 
       console.log("Requesting geolocation...");
 
-      // Try high accuracy first
       navigator.geolocation.getCurrentPosition(
         async (position) => {
           const { latitude, longitude } = position.coords;
@@ -238,7 +252,7 @@ export default function BathroomCodeTracker() {
             if (response.ok) {
               const data = await response.json();
               console.log("Geocoding successful:", data.display_name);
-              coords.address = data.display_name;
+              coords.address = formatNominatimAddress(data);
             } else {
               console.log("Geocoding failed, using coordinates");
             }
@@ -251,7 +265,6 @@ export default function BathroomCodeTracker() {
         (error) => {
           console.log("High accuracy failed, trying low accuracy...", error);
 
-          // Fallback to low accuracy
           navigator.geolocation.getCurrentPosition(
             async (position) => {
               const { latitude, longitude } = position.coords;
@@ -279,7 +292,7 @@ export default function BathroomCodeTracker() {
 
                 if (response.ok) {
                   const data = await response.json();
-                  coords.address = data.display_name;
+                  coords.address = formatNominatimAddress(data);
                 }
               } catch (error) {
                 console.log("Geocoding error:", error);
@@ -831,7 +844,7 @@ export default function BathroomCodeTracker() {
               <div className="form-actions">
                 <button
                   type="submit"
-                  onClick={handleSubmit} 
+                  onClick={handleSubmit}
                   className="btn-primary btn-full"
                 >
                   {editingId ? "Update Entry" : "Save Entry"}
@@ -861,7 +874,7 @@ export default function BathroomCodeTracker() {
       </div>
       <p className="disclaimer">
         Bathroom codes are intended for customers only. Please respect each
-        business’s policies.
+        business's policies.
       </p>
     </div>
   );
